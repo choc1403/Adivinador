@@ -10,7 +10,7 @@ namespace Adivinador.datos
 {
     class ConexionBD
     {
-        public MySqlConnection conexion()
+        public static MySqlConnection conexion()
         {
             String server, database, uid, pwd, info;
             server = "localhost";

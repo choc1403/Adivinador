@@ -90,6 +90,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="datos\ConexionBD.cs" />
+    <Compile Include="datos\ConstructorAcuaticos.cs" />
+    <Compile Include="datos\ConstructorAnfibios.cs" />
+    <Compile Include="datos\ConstructorAves.cs" />
+    <Compile Include="datos\ConstructorDePreguntas.cs" />
+    <Compile Include="datos\ConstructorMamiferos.cs" />
+    <Compile Include="datos\ConstructorReptiles.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="templates\Cargador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="templates\Cargador.Designer.cs">
+      <DependentUpon>Cargador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="templates\Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="templates\Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -107,6 +125,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="templates\Cargador.resx">
+      <DependentUpon>Cargador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="templates\Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
