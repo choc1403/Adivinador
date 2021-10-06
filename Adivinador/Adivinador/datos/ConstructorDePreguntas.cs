@@ -12,7 +12,7 @@ namespace Adivinador.datos
         public String pregunta { get; set; }
         public int nodoPadre { get; set; }
         public int nodoIzquierdo { get; set; }
-        public int nodoDerecho { get; set }
+        public int nodoDerecho { get; set; }
 
         public ConstructorDePreguntas()
         {
