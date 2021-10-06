@@ -7,9 +7,9 @@ USE bdAdivinador;
 CREATE TABLE IF NOT EXISTS PreguntasPredeterminadas(
     idPregunta INT UNSIGNED PRIMARY KEY,
     pregunta TEXT NOT NULL,
-    nodoPadre INT UNSIGNED NOT NULL DEFAULT 0,
-    nodoIzquierdo INT UNSIGNED NOT NULL DEFAULT 0,
-    nodoDerecho INT UNSIGNED NOT NULL DEFAULT 0
+    nodoPadre INT UNSIGNED,
+    nodoIzquierdo INT UNSIGNED,
+    nodoDerecho INT UNSIGNED
 
 );
 
