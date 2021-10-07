@@ -60,20 +60,15 @@ namespace Adivinador.templates
         {
             Cargador cargar = new Cargador();
             cargar.Show();
+            btnSi.Visible = true;
+            btnNo.Visible = true;
+            btnIniciar.Enabled = false;
         }
 
-        private void txtMostrarPregunta_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPrueba_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnSi_Click(object sender, EventArgs e)
-        {
+        {            
             contadorCorrecto++;
             if (sender is Button)
             {
@@ -86,16 +81,13 @@ namespace Adivinador.templates
                     {
                         contadorCorrecto++;
                         if (contadorCorrecto % 2 != 0)
-                        {
-                            MessageBox.Show("CORRECTO " + contadorCorrecto);
+                        {                            
                             nodoDerecho = contadorCorrecto;
-
                         }
 
                     }
                     else
-                    {
-                        MessageBox.Show("CORRECTO " + contadorCorrecto);
+                    {                        
                         nodoDerecho = contadorCorrecto;
                     }
                     sql = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoDerecho + "'";
@@ -116,11 +108,21 @@ namespace Adivinador.templates
         {
             btnSi.Tag = false;
             btnSi.Tag = true;
+            btnSi.Visible = false;
+            btnNo.Visible = false;
 
         }
 
-        private void btnNo_Click(object sender, EventArgs e)
+        private void Inicio_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnNo_Click(object sender, EventArgs e)
+        {            
             contadorIncorrecto++;
             if (sender is Button)
             {
@@ -128,14 +130,13 @@ namespace Adivinador.templates
                 incorrecto = Convert.ToBoolean(boton.Tag);
                 if (incorrecto)
                 {
-                    MessageBox.Show("CORRECTO");
+                    
                 }
                 else
                 {
                     contadorIncorrecto++;
                     if (contadorIncorrecto % 2 == 0)
-                    {
-                        MessageBox.Show("FALSO " + contadorIncorrecto + " )");
+                    {                        
                         nodoIzquierdo = contadorIncorrecto;
                     }
                     sql = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoIzquierdo + "'";
@@ -154,6 +155,7 @@ namespace Adivinador.templates
             sentenciaMostrarPregunta(sql);
             cargador();
             txtMostrarPregunta.Text = pregunta;
+            
         }
     }
 }
