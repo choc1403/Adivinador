@@ -64,6 +64,7 @@
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -92,6 +93,7 @@
     <Compile Include="datos\ConexionBD.cs" />
     <Compile Include="datos\ConstructorAcuaticos.cs" />
     <Compile Include="datos\ConstructorAnfibios.cs" />
+    <Compile Include="datos\ConstructorAnimales.cs" />
     <Compile Include="datos\ConstructorAves.cs" />
     <Compile Include="datos\ConstructorDePreguntas.cs" />
     <Compile Include="datos\ConstructorMamiferos.cs" />
@@ -104,6 +106,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="templates\AgregarAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="templates\AgregarAnimal.Designer.cs">
+      <DependentUpon>AgregarAnimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="templates\Cargador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +133,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="templates\AgregarAnimal.resx">
+      <DependentUpon>AgregarAnimal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="templates\Cargador.resx">
       <DependentUpon>Cargador.cs</DependentUpon>
     </EmbeddedResource>
