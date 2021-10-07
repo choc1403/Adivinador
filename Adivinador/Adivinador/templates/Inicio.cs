@@ -121,6 +121,11 @@ namespace Adivinador.templates
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void btnNo_Click(object sender, EventArgs e)
         {            
             contadorIncorrecto++;

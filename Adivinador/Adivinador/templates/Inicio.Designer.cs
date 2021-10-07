@@ -34,15 +34,17 @@ namespace Adivinador.templates
             this.label1 = new System.Windows.Forms.Label();
             this.txtMostrarPregunta = new System.Windows.Forms.Label();
             this.btnIniciar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSi
             // 
             this.btnSi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSi.Location = new System.Drawing.Point(77, 347);
+            this.btnSi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSi.Location = new System.Drawing.Point(77, 168);
             this.btnSi.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnSi.Name = "btnSi";
-            this.btnSi.Size = new System.Drawing.Size(125, 35);
+            this.btnSi.Size = new System.Drawing.Size(83, 24);
             this.btnSi.TabIndex = 0;
             this.btnSi.Text = "Si";
             this.btnSi.UseVisualStyleBackColor = true;
@@ -51,10 +53,11 @@ namespace Adivinador.templates
             // btnNo
             // 
             this.btnNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNo.Location = new System.Drawing.Point(77, 411);
+            this.btnNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNo.Location = new System.Drawing.Point(77, 219);
             this.btnNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnNo.Name = "btnNo";
-            this.btnNo.Size = new System.Drawing.Size(125, 35);
+            this.btnNo.Size = new System.Drawing.Size(83, 25);
             this.btnNo.TabIndex = 1;
             this.btnNo.Text = "No";
             this.btnNo.UseVisualStyleBackColor = true;
@@ -63,7 +66,7 @@ namespace Adivinador.templates
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 177);
+            this.label1.Location = new System.Drawing.Point(73, 57);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 20);
@@ -73,7 +76,7 @@ namespace Adivinador.templates
             // txtMostrarPregunta
             // 
             this.txtMostrarPregunta.AutoSize = true;
-            this.txtMostrarPregunta.Location = new System.Drawing.Point(291, 177);
+            this.txtMostrarPregunta.Location = new System.Drawing.Point(236, 57);
             this.txtMostrarPregunta.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.txtMostrarPregunta.Name = "txtMostrarPregunta";
             this.txtMostrarPregunta.Size = new System.Drawing.Size(24, 20);
@@ -83,21 +86,35 @@ namespace Adivinador.templates
             // btnIniciar
             // 
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIniciar.Location = new System.Drawing.Point(77, 264);
+            this.btnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIniciar.Location = new System.Drawing.Point(77, 111);
             this.btnIniciar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(125, 35);
+            this.btnIniciar.Size = new System.Drawing.Size(83, 27);
             this.btnIniciar.TabIndex = 4;
             this.btnIniciar.Text = "Iniciar";
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.ForeColor = System.Drawing.Color.Black;
+            this.btnSalir.Location = new System.Drawing.Point(496, 2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(19, 29);
+            this.btnSalir.TabIndex = 5;
+            this.btnSalir.Text = "x";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.button1_Click);
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkRed;
-            this.ClientSize = new System.Drawing.Size(736, 554);
+            this.ClientSize = new System.Drawing.Size(521, 282);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.txtMostrarPregunta);
             this.Controls.Add(this.label1);
@@ -124,5 +141,6 @@ namespace Adivinador.templates
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label txtMostrarPregunta;
         private System.Windows.Forms.Button btnIniciar;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
