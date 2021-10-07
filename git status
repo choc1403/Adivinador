@@ -1,0 +1,71 @@
+[33mcommit 864bca037615446f72439d3c174694550ba17193[m[33m ([m[1;36mHEAD -> [m[1;32mPruebas[m[33m)[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Thu Oct 7 11:51:07 2021 -0600
+
+    Boton de salir
+
+[33mcommit cb70d55c87daabf86f8300e186be707b8f4dd91f[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Thu Oct 7 11:40:47 2021 -0600
+
+    Visualizacion
+
+[33mcommit a2701938187b6da0e7bdf41bc67764489d4c53d4[m[33m ([m[1;31morigin/Pruebas[m[33m)[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Thu Oct 7 11:13:45 2021 -0600
+
+    Prueba de recorrido de preguntas
+
+[33mcommit 9ffe5eb26518ac1eb5d66954c57d14fc8e3731e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Wed Oct 6 15:30:47 2021 -0600
+
+    Modificaciones
+
+[33mcommit c931deba11c6301883d7291d442cb544e798c482[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Wed Oct 6 02:17:30 2021 -0600
+
+    Base del proyecto
+
+[33mcommit 38d3ab8cd58db2779e795b9b2fca53dfe69d10f1[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Wed Oct 6 01:30:40 2021 -0600
+
+    Agregando todos los constructores de la base de datos
+
+[33mcommit 401cd1cff218672da3e263867b331fd7c5f8024a[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Wed Oct 6 01:13:02 2021 -0600
+
+    Se agrego el constructor de preguntas
+
+[33mcommit 24b397dd6e6a007d7253dc47d0d3923055f9b11e[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Wed Oct 6 01:04:48 2021 -0600
+
+    CONEXION A LA BASE DE DATOS MYSQL
+
+[33mcommit 62c99d2ea582c5cea84fa5c95c474c5836186bd9[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Wed Oct 6 00:52:02 2021 -0600
+
+    Creacion del proyecto en C#
+
+[33mcommit 8ab1ba2502f6e1aa16ec2cb43f1583b7c9219141[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Sun Oct 3 20:45:58 2021 -0600
+
+    Agregando los primeros animales a los diferentes tipos de animales
+
+[33mcommit d00a0a64ba6ca353e7b39b5ccb2ba5083c8a07b0[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Sun Oct 3 19:36:52 2021 -0600
+
+    Agregando preguntas las primeras preguntas a la tabla Preguntas Predeterminadas
+
+[33mcommit fd225f81edf2a36769a7e58aa53586dc88b38323[m
+Author: choc1403 <eloicx@gmail.com>
+Date:   Sun Oct 3 19:29:02 2021 -0600
+
+    INICIO DEL PROYECTO

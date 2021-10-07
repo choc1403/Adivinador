@@ -90,8 +90,8 @@ namespace Adivinador.templates
                     {                        
                         nodoDerecho = contadorCorrecto;
                     }
-                    sql = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoDerecho + "'";
-                    sentenciaMostrarPregunta(sql);
+                    String irNodoDerecho  = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoDerecho + "'";
+                    sentenciaMostrarPregunta(irNodoDerecho);
                     cargador();
                     txtMostrarPregunta.Text = pregunta;
 

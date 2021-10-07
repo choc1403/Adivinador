@@ -76,7 +76,7 @@ namespace Adivinador.templates
             // txtMostrarPregunta
             // 
             this.txtMostrarPregunta.AutoSize = true;
-            this.txtMostrarPregunta.Location = new System.Drawing.Point(236, 57);
+            this.txtMostrarPregunta.Location = new System.Drawing.Point(225, 57);
             this.txtMostrarPregunta.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.txtMostrarPregunta.Name = "txtMostrarPregunta";
             this.txtMostrarPregunta.Size = new System.Drawing.Size(24, 20);
