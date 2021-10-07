@@ -15,9 +15,15 @@ namespace Adivinador.templates
     public partial class Inicio : Form
     {
         public String sql, pregunta;
+        public static bool correcto;
+        public static bool incorrecto;
+        public static int contadorCorrecto;
+        public static int contadorIncorrecto;
+        public static int nodoDerecho, nodoIzquierdo;
         public Inicio()
         {
             InitializeComponent();
+            
         }
         void sentenciaMostrarPregunta(String sql)
         {
@@ -59,6 +65,87 @@ namespace Adivinador.templates
         private void txtMostrarPregunta_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtPrueba_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSi_Click(object sender, EventArgs e)
+        {
+            contadorCorrecto++;
+            if (sender is Button)
+            {
+                Button boton = (Button)sender;
+                correcto = Convert.ToBoolean(boton.Tag);
+                if (correcto)
+                {
+                    contadorCorrecto++;
+                    if(contadorCorrecto%2 == 0)
+                    {
+                        contadorCorrecto++;
+                        if (contadorCorrecto % 2 != 0)
+                        {
+                            MessageBox.Show("CORRECTO " + contadorCorrecto);
+                            nodoDerecho = contadorCorrecto;
+
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("CORRECTO " + contadorCorrecto);
+                        nodoDerecho = contadorCorrecto;
+                    }
+                    sql = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoDerecho + "'";
+                    sentenciaMostrarPregunta(sql);
+                    cargador();
+                    txtMostrarPregunta.Text = pregunta;
+
+                }
+                else
+                {
+                    MessageBox.Show("FALSO");
+                }
+            }
+            
+        }
+
+        private void Inicio_Load(object sender, EventArgs e)
+        {
+            btnSi.Tag = false;
+            btnSi.Tag = true;
+
+        }
+
+        private void btnNo_Click(object sender, EventArgs e)
+        {
+            contadorIncorrecto++;
+            if (sender is Button)
+            {
+                Button boton = (Button)sender;
+                incorrecto = Convert.ToBoolean(boton.Tag);
+                if (incorrecto)
+                {
+                    MessageBox.Show("CORRECTO");
+                }
+                else
+                {
+                    contadorIncorrecto++;
+                    if (contadorIncorrecto % 2 == 0)
+                    {
+                        MessageBox.Show("FALSO " + contadorIncorrecto + " )");
+                        nodoIzquierdo = contadorIncorrecto;
+                    }
+                    sql = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoIzquierdo + "'";
+                    sentenciaMostrarPregunta(sql);
+                    cargador();
+                    txtMostrarPregunta.Text = pregunta;
+
+                }
+            }
+            
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)

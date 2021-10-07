@@ -34,6 +34,7 @@ namespace Adivinador.templates
             this.label1 = new System.Windows.Forms.Label();
             this.txtMostrarPregunta = new System.Windows.Forms.Label();
             this.btnIniciar = new System.Windows.Forms.Button();
+            this.txtPrueba = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSi
@@ -44,6 +45,7 @@ namespace Adivinador.templates
             this.btnSi.TabIndex = 0;
             this.btnSi.Text = "Si";
             this.btnSi.UseVisualStyleBackColor = true;
+            this.btnSi.Click += new System.EventHandler(this.btnSi_Click);
             // 
             // btnNo
             // 
@@ -53,6 +55,7 @@ namespace Adivinador.templates
             this.btnNo.TabIndex = 1;
             this.btnNo.Text = "No";
             this.btnNo.UseVisualStyleBackColor = true;
+            this.btnNo.Click += new System.EventHandler(this.btnNo_Click);
             // 
             // label1
             // 
@@ -83,11 +86,22 @@ namespace Adivinador.templates
             this.btnIniciar.UseVisualStyleBackColor = true;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
+            // txtPrueba
+            // 
+            this.txtPrueba.AutoSize = true;
+            this.txtPrueba.Location = new System.Drawing.Point(341, 338);
+            this.txtPrueba.Name = "txtPrueba";
+            this.txtPrueba.Size = new System.Drawing.Size(41, 13);
+            this.txtPrueba.TabIndex = 5;
+            this.txtPrueba.Text = "Prueba";
+            this.txtPrueba.Click += new System.EventHandler(this.txtPrueba_Click);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtPrueba);
             this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.txtMostrarPregunta);
             this.Controls.Add(this.label1);
@@ -96,6 +110,7 @@ namespace Adivinador.templates
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Inicio";
             this.Text = "Inicio";
+            this.Load += new System.EventHandler(this.Inicio_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,5 +123,6 @@ namespace Adivinador.templates
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label txtMostrarPregunta;
         private System.Windows.Forms.Button btnIniciar;
+        private System.Windows.Forms.Label txtPrueba;
     }
 }
