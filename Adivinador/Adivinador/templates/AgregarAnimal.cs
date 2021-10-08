@@ -62,6 +62,8 @@ namespace Adivinador.templates
             if (agre)
             {
                 MessageBox.Show("AGREGADO");
+                Inicio ir = new Inicio();
+                ir.Show();
                 Visible = false;
             }
         }

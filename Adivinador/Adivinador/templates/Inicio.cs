@@ -61,6 +61,7 @@ namespace Adivinador.templates
         {
             AgregarAnimal ir = new AgregarAnimal();
             ir.Show();
+            Visible = false;
             btnIniciar.Enabled = true;
         }
 
