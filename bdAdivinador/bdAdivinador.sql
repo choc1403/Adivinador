@@ -6,7 +6,7 @@ USE bdAdivinador;
 
 CREATE TABLE IF NOT EXISTS PreguntasPredeterminadas(
     idPregunta INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    pregunta TEXT NOT NULL,
+    pregunta TEXT,
     nodoPadre INT UNSIGNED,
     nodoIzquierdo INT UNSIGNED,
     nodoDerecho INT UNSIGNED,

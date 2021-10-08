@@ -45,6 +45,8 @@ namespace Adivinador.templates
                 {
                     MessageBox.Show("No se ha encontrado ninguna pregunta");
                     agregar();
+                    contadorCorrecto = 0;
+                    contadorIncorrecto = 0;
                     
                 }
             }

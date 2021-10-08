@@ -14,9 +14,10 @@ namespace Adivinador.templates
 {
     public partial class AgregarAnimal : Form
     {
-        public static String tipoDeAnimal, agregarAnimal, agregarPregunta, wu;
+        public static String tipoDeAnimal, agregarAnimal, agregarPregunta, wu, sql;
         public static String id;
         public static bool agre;
+        public static int nodoPadre;
         ConstructorDePreguntas agPregunta;
         ConstructorAnimales agAnimal;
         public AgregarAnimal()
@@ -57,6 +58,7 @@ namespace Adivinador.templates
             }
             return agre;
         }
+       
         void realizado()
         {
             if (agre)
@@ -69,37 +71,66 @@ namespace Adivinador.templates
         }
         void clasificar(int idPregunta, String tipo)
         {
+            
             switch (tipo)
             {
                 case "Acuaticos":
+                    
                     agregarAnimal = "INSERT INTO Acuaticos(idPregunta, nombre)" +
                     "VALUES('"+idPregunta+"','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+
+                    nodoPadre = 2;
+                    sql = "UPDATE PreguntasPredeterminadas" +
+                    " SET nodoPadre = '" + nodoPadre + "'" +
+                    " WHERE idPregunta = '" + idPregunta + "'";
+                    agregar(sql);
                     realizado();
                     break;
 
-                case "Anfibios":
+                case "Anfibios":                    
                     agregarAnimal = "INSERT INTO Anfibios(idPregunta, nombre)" +
                     "VALUES('" + idPregunta + "','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+
+                    nodoPadre = 8;
+                    sql = "UPDATE PreguntasPredeterminadas" +
+                    " SET nodoPadre = '" + nodoPadre + "'" +
+                    " WHERE idPregunta = '" + idPregunta + "'";
+                    agregar(sql);
                     realizado();
+
                     break;
 
                 case "Aves":
+                    
                     agregarAnimal = "INSERT INTO Aves(idPregunta, nombre)" +
                     "VALUES('" + idPregunta + "','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+
+                    nodoPadre = 1;
+                    sql = "UPDATE PreguntasPredeterminadas" +
+                    " SET nodoPadre = '" + nodoPadre + "'" +
+                    " WHERE idPregunta = '" + idPregunta + "'";
+                    agregar(sql);
                     realizado();
                     break;
 
                 case "Mamiferos":
+                    
                     agregarAnimal = "INSERT INTO Mamiferos(idPregunta, nombre)" +
                     "VALUES('" + idPregunta + "','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+
+                    nodoPadre = 4;
+                    sql = "UPDATE PreguntasPredeterminadas" +
+                    " SET nodoPadre = '" + nodoPadre + "'" +
+                    " WHERE idPregunta = '" + idPregunta + "'";
+                    agregar(sql);
                     realizado();
                     break;
 
@@ -108,10 +139,36 @@ namespace Adivinador.templates
                     "VALUES('" + idPregunta + "','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+
+                    nodoPadre = 6;
+
+                    sql = "UPDATE PreguntasPredeterminadas" +
+                    " SET nodoPadre = '" + nodoPadre + "'" +
+                    " WHERE idPregunta = '" + idPregunta + "'";
+                    agregar(sql);
                     realizado();
                     break;
             }
         }
+
+        private void AgregarAnimal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void AgregarAnimal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         void vaciar()
         {
             cbTipoAnimal.Text = "";
