@@ -14,7 +14,9 @@ namespace Adivinador.templates
 {
     public partial class AgregarAnimal : Form
     {
-        public static String tipoDeAnimal, agregarAnimal, agregarPregunta;
+        public static String tipoDeAnimal, agregarAnimal, agregarPregunta, wu;
+        public static String id;
+        public static bool agre;
         ConstructorDePreguntas agPregunta;
         ConstructorAnimales agAnimal;
         public AgregarAnimal()
@@ -31,25 +33,35 @@ namespace Adivinador.templates
             agPregunta.pregunta = Convert.ToString(txtPregunta.Text);
 
         }
-        void agregar(String sql)
+        bool agregar(String sql)
         {
             MySqlConnection conexion = ConexionBD.conexion();
             conexion.Open();
             try
             {
                 MySqlCommand comando = new MySqlCommand(sql, conexion);                
-                comando.ExecuteNonQuery();                
+                comando.ExecuteNonQuery();
 
-                MessageBox.Show("SENTENCIA REALIZADA");
+                //MessageBox.Show("SENTENCIA REALIZADA");
+                agre = true;
                 
 
             }catch(MySqlException ex)
             {
                 MessageBox.Show("ERROR: " + ex);
+                
             }
             finally
             {
                 conexion.Close();
+            }
+            return agre;
+        }
+        void realizado()
+        {
+            if (agre)
+            {
+                MessageBox.Show("AGREGADO");
             }
         }
         void clasificar(int idPregunta, String tipo)
@@ -61,6 +73,7 @@ namespace Adivinador.templates
                     "VALUES('"+idPregunta+"','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+                    realizado();
                     break;
 
                 case "Anfibios":
@@ -68,6 +81,7 @@ namespace Adivinador.templates
                     "VALUES('" + idPregunta + "','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+                    realizado();
                     break;
 
                 case "Aves":
@@ -75,6 +89,7 @@ namespace Adivinador.templates
                     "VALUES('" + idPregunta + "','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+                    realizado();
                     break;
 
                 case "Mamiferos":
@@ -82,6 +97,7 @@ namespace Adivinador.templates
                     "VALUES('" + idPregunta + "','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+                    realizado();
                     break;
 
                 case "Reptiles":
@@ -89,6 +105,7 @@ namespace Adivinador.templates
                     "VALUES('" + idPregunta + "','" + agAnimal.nombre + "')";
 
                     agregar(agregarAnimal);
+                    realizado();
                     break;
             }
         }
@@ -97,6 +114,36 @@ namespace Adivinador.templates
             cbTipoAnimal.Text = "";
             txtNombre.Text = "";
             txtPregunta.Text = "";
+        }
+        void mostrarId(String sql)
+        {
+            MySqlDataReader reader = null;
+            MySqlConnection conexion = ConexionBD.conexion();
+            conexion.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                reader = comando.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id = reader.GetString(0);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se ha encontrado ninguna pregunta");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
 
         private void btnPregunta_Click(object sender, EventArgs e)
@@ -107,15 +154,36 @@ namespace Adivinador.templates
             }
             else
             {
-                int contador = 11;
+                
                 declarar();
                 
-                agregarPregunta = "INSERT INTO PreguntasPredeterminadas (idPregunta, pregunta)" +
-                    "VALUES('"+contador+"', '"+agPregunta.pregunta+"')";
+                agregarPregunta = "INSERT INTO PreguntasPredeterminadas (pregunta)" +
+                    "VALUES('"+agPregunta.pregunta+"')";
 
                 agregar(agregarPregunta);
+                
+                String hora = DateTime.Now.ToString("HH:mm:ss");
+                String fecha = DateTime.Now.ToString("yyyy-MM-dd");
 
-                clasificar(contador, tipoDeAnimal);
+                wu = fecha+" "+hora;
+                
+                
+                
+
+                
+                String buscar = "SELECT idPregunta " +
+                    "FROM PreguntasPredeterminadas " +
+                    "WHERE fecha_creacion = '"+wu+"'";
+
+                mostrarId(buscar);
+
+
+                
+
+                int idPregunta = Convert.ToInt32(id);
+
+                clasificar(idPregunta, tipoDeAnimal);
+
                 vaciar();
                 
 
