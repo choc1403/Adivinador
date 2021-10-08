@@ -62,6 +62,7 @@ namespace Adivinador.templates
             if (agre)
             {
                 MessageBox.Show("AGREGADO");
+                Visible = false;
             }
         }
         void clasificar(int idPregunta, String tipo)

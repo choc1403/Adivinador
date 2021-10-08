@@ -44,6 +44,8 @@ namespace Adivinador.templates
                 else
                 {
                     MessageBox.Show("No se ha encontrado ninguna pregunta");
+                    agregar();
+                    
                 }
             }
             catch (MySqlException ex)
@@ -54,6 +56,12 @@ namespace Adivinador.templates
             {
                 conexion.Close();
             }
+        }
+        void agregar()
+        {
+            AgregarAnimal ir = new AgregarAnimal();
+            ir.Show();
+            btnIniciar.Enabled = true;
         }
 
         void cargador()
