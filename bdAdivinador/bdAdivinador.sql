@@ -6,59 +6,26 @@ USE bdAdivinador;
 
 CREATE TABLE IF NOT EXISTS PreguntasPredeterminadas(
     idPregunta INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    pregunta TEXT,
-    nodoPadre INT UNSIGNED,
-    nodoIzquierdo INT UNSIGNED,
-    nodoDerecho INT UNSIGNED,
+    pregunta TEXT,    
+    nodoIzquierdo VARCHAR(25)  DEFAULT 'izq',
+    nodoDerecho VARCHAR(25)  DEFAULT 'der',
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
 
 );
 
-CREATE TABLE IF NOT EXISTS Aves(
-    idAve INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    idPregunta INT UNSIGNED NOT NULL,
-    nombre VARCHAR(50) NOT NULL UNIQUE,
+INSERT INTO PreguntasPredeterminadas(pregunta)
+    VALUES('LADRA');
 
-    FOREIGN KEY (idPregunta) REFERENCES PreguntasPredeterminadas(idPregunta) ON DELETE CASCADE
-);
+INSERT INTO PreguntasPredeterminadas(pregunta)
+    VALUES('PERRO');
 
-CREATE TABLE IF NOT EXISTS Acuaticos(
-    idAcuatico INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    idPregunta INT UNSIGNED NOT NULL,
-    nombre VARCHAR(50) NOT NULL UNIQUE,
+INSERT INTO PreguntasPredeterminadas(pregunta)
+    VALUES('Dice miu');
 
-    FOREIGN KEY (idPregunta) REFERENCES PreguntasPredeterminadas(idPregunta) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS Mamiferos(
-    idMamifero INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    idPregunta INT UNSIGNED NOT NULL,
-    nombre VARCHAR(50) NOT NULL UNIQUE,
-
-    FOREIGN KEY (idPregunta) REFERENCES PreguntasPredeterminadas(idPregunta) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS Reptiles(
-    idReptil INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    idPregunta INT UNSIGNED NOT NULL,
-    nombre VARCHAR(50) NOT NULL UNIQUE,
-
-    FOREIGN KEY (idPregunta) REFERENCES PreguntasPredeterminadas(idPregunta) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS Anfibios(
-    idAnfibio INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-    idPregunta INT UNSIGNED NOT NULL,
-    nombre VARCHAR(50) NOT NULL UNIQUE,
-
-    FOREIGN KEY (idPregunta) REFERENCES PreguntasPredeterminadas(idPregunta) ON DELETE CASCADE
-);
+INSERT INTO PreguntasPredeterminadas(pregunta)
+    VALUES('Gato');
 
 
 DESC PreguntasPredeterminadas;
-DESC Aves;
-DESC Acuaticos;
-DESC Mamiferos;
-DESC Reptiles;
-DESC Anfibios;
+
 

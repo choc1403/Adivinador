@@ -23,7 +23,7 @@ namespace Adivinador.templates
         public Inicio()
         {
             InitializeComponent();
-            
+
         }
         void sentenciaMostrarPregunta(String sql)
         {
@@ -47,7 +47,7 @@ namespace Adivinador.templates
                     agregar();
                     contadorCorrecto = 0;
                     contadorIncorrecto = 0;
-                    
+
                 }
             }
             catch (MySqlException ex)
@@ -76,10 +76,10 @@ namespace Adivinador.templates
             btnIniciar.Enabled = false;
         }
 
-        
+
 
         private void btnSi_Click(object sender, EventArgs e)
-        {            
+        {
             contadorCorrecto++;
             if (sender is Button)
             {
@@ -88,22 +88,22 @@ namespace Adivinador.templates
                 if (correcto)
                 {
                     contadorCorrecto++;
-                    if(contadorCorrecto%2 == 0)
+                    if (contadorCorrecto % 2 == 0)
                     {
                         contadorCorrecto++;
                         if (contadorCorrecto % 2 != 0)
-                        {                            
+                        {
                             nodoDerecho = contadorCorrecto;
                         }
 
                     }
                     else
-                    {                        
+                    {
                         nodoDerecho = contadorCorrecto;
                     }
-                    String irNodoDerecho  = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoDerecho + "'";
+                    String irNodoDerecho = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoDerecho + "'";
                     sentenciaMostrarPregunta(irNodoDerecho);
-                    cargador();
+                    //cargador();
                     txtMostrarPregunta.Text = pregunta;
 
                 }
@@ -112,7 +112,7 @@ namespace Adivinador.templates
                     MessageBox.Show("FALSO");
                 }
             }
-            
+
         }
 
         private void Inicio_Load(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace Adivinador.templates
         }
 
         private void btnNo_Click(object sender, EventArgs e)
-        {            
+        {
             contadorIncorrecto++;
             if (sender is Button)
             {
@@ -146,23 +146,23 @@ namespace Adivinador.templates
                 incorrecto = Convert.ToBoolean(boton.Tag);
                 if (incorrecto)
                 {
-                    
+
                 }
                 else
                 {
                     contadorIncorrecto++;
                     if (contadorIncorrecto % 2 == 0)
-                    {                        
+                    {
                         nodoIzquierdo = contadorIncorrecto;
                     }
                     sql = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoIzquierdo + "'";
                     sentenciaMostrarPregunta(sql);
-                    cargador();
+                    //cargador();
                     txtMostrarPregunta.Text = pregunta;
 
                 }
             }
-            
+
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
@@ -171,7 +171,7 @@ namespace Adivinador.templates
             sentenciaMostrarPregunta(sql);
             cargador();
             txtMostrarPregunta.Text = pregunta;
-            
+
         }
     }
 }
