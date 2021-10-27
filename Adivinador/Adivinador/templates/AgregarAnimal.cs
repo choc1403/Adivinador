@@ -42,6 +42,56 @@ namespace Adivinador.templates
             ir.Show();
             Visible = false;
         }
+        public void agregarP(String sql)
+        {
+            MySqlConnection conexion = ConexionBD.conexion();
+            conexion.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.ExecuteNonQuery();
+
+                //MessageBox.Show("Agregado");
+
+
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("ERROR: " + ex);
+
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+        }
+        public void agregarA(String sql)
+        {
+            MySqlConnection conexion = ConexionBD.conexion();
+            conexion.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.ExecuteNonQuery();
+
+                //MessageBox.Show("Agregado");
+
+
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("ERROR: " + ex);
+
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+        }
         void mostrarId(String sql)
         {
             MySqlDataReader reader = null;
@@ -96,13 +146,7 @@ namespace Adivinador.templates
         private void rbSi_CheckedChanged(object sender, EventArgs e)
         {
             nodoIzquierdo = true;
-            buscar = "SELECT idPregunta " +
-                   "FROM PreguntasPredeterminadas " +
-                   "WHERE idPregunta = '1'";
-
-            mostrarId(buscar);
-
-            MessageBox.Show("" + id);
+            
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -133,29 +177,33 @@ namespace Adivinador.templates
                 agregarPregunta = "INSERT INTO PreguntasPredeterminadas (pregunta)" +
                     "VALUES('"+agPregunta.pregunta+"')";
 
-                agPregunta.agregar(agregarPregunta);
+                agregarP(agregarPregunta);
 
                 agregarAnimal = "INSERT INTO PreguntasPredeterminadas (pregunta)" +
                     "VALUES('" + agAnimal.nombre + " ')";
 
-                agAnimal.agregar(agregarAnimal);
+                agregarA(agregarAnimal);
 
                 vaciar();
+
                 
 
-  
+               String idPregunta = "SELECT idPregunta " +
+                       "FROM PreguntasPredeterminadas " +
+                       "WHERE pregunta = '" + agPregunta.pregunta + "'";
+
+                mostrarId(idPregunta);
+                int pre = Convert.ToInt32(id);
+
+                
+                MessageBox.Show("" + id);
+
+
+
             }
             
         }
 
-        void fecha_hora()
-        {
-            String hora = DateTime.Now.ToString("HH:mm:ss");
-            String fecha = DateTime.Now.ToString("yyyy-MM-dd");
-
-            wu = fecha + " " + hora;
-            
-            
-        }
+        
     }
 }
