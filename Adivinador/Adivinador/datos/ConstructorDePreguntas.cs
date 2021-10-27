@@ -15,5 +15,7 @@ namespace Adivinador.datos
         {
 
         }
+
+        
     }
 }

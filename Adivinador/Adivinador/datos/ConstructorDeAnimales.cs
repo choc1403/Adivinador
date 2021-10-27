@@ -8,5 +8,11 @@ namespace Adivinador.datos
 {
     class ConstructorDeAnimales
     {
+        public string nombre { get; set; }
+
+        public ConstructorDeAnimales()
+        {
+
+        }
     }
 }

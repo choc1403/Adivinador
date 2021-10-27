@@ -29,13 +29,24 @@ namespace Adivinador.prueba
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnIniciar = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btnIniciar
+            // 
+            this.btnIniciar.Location = new System.Drawing.Point(165, 193);
+            this.btnIniciar.Name = "btnIniciar";
+            this.btnIniciar.Size = new System.Drawing.Size(75, 23);
+            this.btnIniciar.TabIndex = 0;
+            this.btnIniciar.Text = "Iniciar";
+            this.btnIniciar.UseVisualStyleBackColor = true;
             // 
             // Prueba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnIniciar);
             this.Name = "Prueba";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Prueba_Load);
@@ -44,5 +55,7 @@ namespace Adivinador.prueba
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnIniciar;
     }
 }
