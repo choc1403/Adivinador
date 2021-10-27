@@ -91,13 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="datos\ConexionBD.cs" />
-    <Compile Include="datos\ConstructorAcuaticos.cs" />
-    <Compile Include="datos\ConstructorAnfibios.cs" />
-    <Compile Include="datos\ConstructorAnimales.cs" />
-    <Compile Include="datos\ConstructorAves.cs" />
+    <Compile Include="datos\ConstructorDeAnimales.cs" />
     <Compile Include="datos\ConstructorDePreguntas.cs" />
-    <Compile Include="datos\ConstructorMamiferos.cs" />
-    <Compile Include="datos\ConstructorReptiles.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
