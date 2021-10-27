@@ -14,7 +14,7 @@ namespace Adivinador.templates
 {
     public partial class Inicio : Form
     {
-        public String sql, pregunta, nodo;
+        public String sql, pregunta;
         public static bool correcto;
         public static bool incorrecto;
         public static int contadorCorrecto;
@@ -23,7 +23,7 @@ namespace Adivinador.templates
         public Inicio()
         {
             InitializeComponent();
-            
+
         }
         void sentenciaMostrarPregunta(String sql)
         {
@@ -47,41 +47,6 @@ namespace Adivinador.templates
                     agregar();
                     contadorCorrecto = 0;
                     contadorIncorrecto = 0;
-                    
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("ERROR: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Close();
-            }
-        }
-        void sentenciaMostrarNodo(String sql)
-        {
-            MySqlDataReader reader = null;
-            MySqlConnection conexion = ConexionBD.conexion();
-            conexion.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(sql, conexion);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        nodo = reader.GetString(0);
-                        
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("YA NO SE ENCUENTRAR PREGUNTAS");
-                    Inicio ir = new Inicio();
-                    ir.Show();
-                    Visible = false;
 
                 }
             }
@@ -111,46 +76,43 @@ namespace Adivinador.templates
             btnIniciar.Enabled = false;
         }
 
-        
 
-        
 
         private void btnSi_Click(object sender, EventArgs e)
         {
-            
-            if (nodoDerechoInicio() == "2")
+            contadorCorrecto++;
+            if (sender is Button)
             {
-                String irNodoDerecho = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='2'";
-                sentenciaMostrarNodo(irNodoDerecho);                    
-                txtMostrarPregunta.Text = nodo;
-                contadorCorrecto += 2;
-            }
-            if (contadorCorrecto %2 == 0)
-            {
-
-                nodoDerecho = contadorCorrecto;
-                if (derecho(nodoDerecho) == "der")
+                Button boton = (Button)sender;
+                correcto = Convert.ToBoolean(boton.Tag);
+                if (correcto)
                 {
-                    MessageBox.Show("Logrado");
+                    contadorCorrecto++;
+                    if (contadorCorrecto % 2 == 0)
+                    {
+                        contadorCorrecto++;
+                        if (contadorCorrecto % 2 != 0)
+                        {
+                            nodoDerecho = contadorCorrecto;
+                        }
+
+                    }
+                    else
+                    {
+                        nodoDerecho = contadorCorrecto;
+                    }
+                    String irNodoDerecho = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoDerecho + "'";
+                    sentenciaMostrarPregunta(irNodoDerecho);
+                    //cargador();
+                    txtMostrarPregunta.Text = pregunta;
+
                 }
                 else
                 {
-                    String irNodoIzquierdoo = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoDerecho + "'";
-                    sentenciaMostrarPregunta(irNodoIzquierdoo);
-                    txtMostrarPregunta.Text = pregunta;
+                    MessageBox.Show("FALSO");
                 }
             }
 
-        }
-
-        string derecho(int x)
-        {
-            string right;
-            String irNodoDerecho = "SELECT nodoDerecho FROM PreguntasPredeterminadas WHERE idPregunta ='" + x + "'";
-            sentenciaMostrarNodo(irNodoDerecho);
-            right = nodo;
-            
-            return right;
         }
 
         private void Inicio_Load(object sender, EventArgs e)
@@ -177,67 +139,39 @@ namespace Adivinador.templates
 
         private void btnNo_Click(object sender, EventArgs e)
         {
-            if (nodoIzquierdoInicio() == "3")
+            contadorIncorrecto++;
+            if (sender is Button)
             {
-                String irNodoIzquierdo = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='3'";
-                sentenciaMostrarNodo(irNodoIzquierdo);
-                txtMostrarPregunta.Text = nodo;
-                contadorIncorrecto += 2;
-            }
-
-            if (contadorIncorrecto % 2 == 0)
-            {
-                contadorIncorrecto++;
-                if (contadorIncorrecto % 2 != 0)
+                Button boton = (Button)sender;
+                incorrecto = Convert.ToBoolean(boton.Tag);
+                if (incorrecto)
                 {
-                    nodoIzquierdo = contadorIncorrecto;
+
                 }
+                else
+                {
+                    contadorIncorrecto++;
+                    if (contadorIncorrecto % 2 == 0)
+                    {
+                        nodoIzquierdo = contadorIncorrecto;
+                    }
+                    sql = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoIzquierdo + "'";
+                    sentenciaMostrarPregunta(sql);
+                    //cargador();
+                    txtMostrarPregunta.Text = pregunta;
 
+                }
             }
-            else
-            {
-                nodoIzquierdo = contadorIncorrecto;
-            }
-            MessageBox.Show("" + nodoIzquierdo);
-            izquierdo(nodoIzquierdo);
 
-
-        }
-        void izquierdo(int x)
-        {
-            
-            String irNodoIzquierdoo = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + x + "'";
-            sentenciaMostrarPregunta(irNodoIzquierdoo);
-            txtMostrarPregunta.Text = pregunta;
-           
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             sql = "SELECT pregunta FROM PreguntasPredeterminadas LIMIT 1";
             sentenciaMostrarPregunta(sql);
-            cargador();            
-            txtMostrarPregunta.Text = ""+pregunta;
-            
+            cargador();
+            txtMostrarPregunta.Text = pregunta;
+
         }
-
-        string nodoDerechoInicio()
-        {
-            String irNodoDerecho = "SELECT nodoDerecho FROM PreguntasPredeterminadas WHERE idPregunta ='" + 1 + "'";
-            sentenciaMostrarNodo(irNodoDerecho);
-            
-            String nodoPadre = nodo;
-            return nodoPadre;
-        }
-        string nodoIzquierdoInicio()
-        {
-            String irNodoIzquierdo = "SELECT nodoIzquierdo FROM PreguntasPredeterminadas WHERE idPregunta ='" + 1 + "'";
-            sentenciaMostrarNodo(irNodoIzquierdo);
-
-            String nodoPadre = nodo;
-            return nodoPadre;
-        }
-
-
     }
 }
