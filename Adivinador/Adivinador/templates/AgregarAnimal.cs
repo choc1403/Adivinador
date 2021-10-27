@@ -15,7 +15,7 @@ namespace Adivinador.templates
     public partial class AgregarAnimal : Form
     {
         public static String agregarAnimal, agregarPregunta, wu, sql, buscar;
-        public static String id;
+        public static String idP, idA;
         public static bool agre;
         public static bool nodoIzquierdo, nodoDerecho;
         ConstructorDePreguntas agPregunta;
@@ -42,88 +42,8 @@ namespace Adivinador.templates
             ir.Show();
             Visible = false;
         }
-        public void agregarP(String sql)
-        {
-            MySqlConnection conexion = ConexionBD.conexion();
-            conexion.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(sql, conexion);
-                comando.ExecuteNonQuery();
-
-                //MessageBox.Show("Agregado");
-
-
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("ERROR: " + ex);
-
-            }
-            finally
-            {
-                conexion.Close();
-            }
-
-        }
-        public void agregarA(String sql)
-        {
-            MySqlConnection conexion = ConexionBD.conexion();
-            conexion.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(sql, conexion);
-                comando.ExecuteNonQuery();
-
-                //MessageBox.Show("Agregado");
-
-
-
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("ERROR: " + ex);
-
-            }
-            finally
-            {
-                conexion.Close();
-            }
-
-        }
-        void mostrarId(String sql)
-        {
-            MySqlDataReader reader = null;
-            MySqlConnection conexion = ConexionBD.conexion();
-            conexion.Open();
-            try
-            {
-                MySqlCommand comando = new MySqlCommand(sql, conexion);
-                reader = comando.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        id = reader.GetString(0);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No se ha encontrado ninguna pregunta");
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("ERROR: " + ex.Message);
-            }
-            finally
-            {
-                conexion.Close();
-            }
-        }
-
-
+        
+        
         private void AgregarAnimal_KeyPress(object sender, KeyPressEventArgs e)
         {
             Application.Exit();
@@ -177,33 +97,16 @@ namespace Adivinador.templates
                 agregarPregunta = "INSERT INTO PreguntasPredeterminadas (pregunta)" +
                     "VALUES('"+agPregunta.pregunta+"')";
 
-                agregarP(agregarPregunta);
+                agPregunta.agregar(agregarPregunta);
 
                 agregarAnimal = "INSERT INTO PreguntasPredeterminadas (pregunta)" +
                     "VALUES('" + agAnimal.nombre + " ')";
 
-                agregarA(agregarAnimal);
+                agAnimal.agregar(agregarAnimal);
 
                 vaciar();
 
-                
-
-               String idPregunta = "SELECT idPregunta " +
-                       "FROM PreguntasPredeterminadas " +
-                       "WHERE pregunta = '" + agPregunta.pregunta + "'";
-
-                mostrarId(idPregunta);
-                int pre = Convert.ToInt32(id);
-
-                
-                MessageBox.Show("" + id);
-
-
-
-            }
-            
-        }
-
-        
+            }  
+        }  
     }
 }

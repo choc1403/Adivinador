@@ -17,7 +17,7 @@ namespace Adivinador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AgregarAnimal());
+            Application.Run(new Inicio());
         }
     }
 }

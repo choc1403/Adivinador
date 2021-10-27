@@ -28,7 +28,7 @@ namespace Adivinador.datos
                 MySqlCommand comando = new MySqlCommand(sql, conexion);
                 comando.ExecuteNonQuery();
 
-                //MessageBox.Show("Agregado");
+                MessageBox.Show("Agregado");
 
 
 
