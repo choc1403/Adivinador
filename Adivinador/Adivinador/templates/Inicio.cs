@@ -103,7 +103,7 @@ namespace Adivinador.templates
                     }
                     String irNodoDerecho  = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoDerecho + "'";
                     sentenciaMostrarPregunta(irNodoDerecho);
-                    cargador();
+                    //cargador();
                     txtMostrarPregunta.Text = pregunta;
 
                 }
@@ -157,7 +157,7 @@ namespace Adivinador.templates
                     }
                     sql = "SELECT pregunta FROM PreguntasPredeterminadas WHERE idPregunta ='" + nodoIzquierdo + "'";
                     sentenciaMostrarPregunta(sql);
-                    cargador();
+                    //cargador();
                     txtMostrarPregunta.Text = pregunta;
 
                 }

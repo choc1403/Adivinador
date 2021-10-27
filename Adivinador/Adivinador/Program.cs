@@ -1,5 +1,4 @@
 ﻿using Adivinador.templates;
-using Adivinador.prueba;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace Adivinador
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AgregarAnimal());
+            Application.Run(new Inicio());
         }
     }
 }
