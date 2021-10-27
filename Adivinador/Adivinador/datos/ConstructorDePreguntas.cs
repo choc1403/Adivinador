@@ -10,7 +10,7 @@ namespace Adivinador.datos
 {
     class ConstructorDePreguntas
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public String pregunta { get; set; }
         
         public ConstructorDePreguntas()
@@ -27,7 +27,7 @@ namespace Adivinador.datos
                 MySqlCommand comando = new MySqlCommand(sql, conexion);
                 comando.ExecuteNonQuery();
 
-                //MessageBox.Show("SENTENCIA REALIZADA");
+                MessageBox.Show("SENTENCIA REALIZADA");
 
 
 
@@ -42,6 +42,87 @@ namespace Adivinador.datos
                 conexion.Close();
             }
 
+        }
+        public void actualizar(String sql)
+        {
+            MySqlConnection conexion = ConexionBD.conexion();
+            conexion.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.ExecuteNonQuery();
+
+                //MessageBox.Show("Agregado");
+
+
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("ERROR: " + ex);
+
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+        }
+
+        public void eliminar(String sql)
+        {
+            MySqlConnection conexion = ConexionBD.conexion();
+            conexion.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                comando.ExecuteNonQuery();
+
+                //MessageBox.Show("Agregado");
+
+
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("ERROR: " + ex);
+
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+        }
+        public void seleccionar(String sql)
+        {
+            MySqlDataReader reader = null;
+            MySqlConnection conexion = ConexionBD.conexion();
+            conexion.Open();
+            try
+            {
+                MySqlCommand comando = new MySqlCommand(sql, conexion);
+                reader = comando.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id = reader.GetString(0);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se ha encontrado ninguna pregunta");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
     }
 }

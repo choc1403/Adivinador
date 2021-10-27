@@ -76,6 +76,17 @@ namespace Adivinador.templates
             btnIniciar.Enabled = false;
         }
 
+        private void si(String respuesta)
+        {
+            String res = respuesta;
+
+            if (res == "s")
+            {
+
+            }
+            
+        }
+
         
 
         private void btnSi_Click(object sender, EventArgs e)
@@ -170,8 +181,13 @@ namespace Adivinador.templates
             sql = "SELECT pregunta FROM PreguntasPredeterminadas LIMIT 1";
             sentenciaMostrarPregunta(sql);
             cargador();
-            txtMostrarPregunta.Text = pregunta;
+            String raiz = pregunta;
+            txtMostrarPregunta.Text = "Es un/a "+pregunta;
             
+        }
+
+        void prueba() { 
+
         }
     }
 }

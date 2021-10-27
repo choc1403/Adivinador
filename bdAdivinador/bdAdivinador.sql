@@ -13,6 +13,9 @@ CREATE TABLE IF NOT EXISTS PreguntasPredeterminadas(
 
 );
 
+INSERT INTO PreguntasPredeterminadas(pregunta)
+    VALUES('PERRO');
+
 DESC PreguntasPredeterminadas;
 
 

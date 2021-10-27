@@ -33,4 +33,3 @@ E:\REPOSITORIO\C#\ADIVINADOR\Adivinador\Adivinador\obj\Debug\Adivinador.exe
 E:\REPOSITORIO\C#\ADIVINADOR\Adivinador\Adivinador\obj\Debug\Adivinador.pdb
 E:\REPOSITORIO\C#\ADIVINADOR\Adivinador\Adivinador\obj\Debug\Adivinador.templates.Cargador.resources
 E:\REPOSITORIO\C#\ADIVINADOR\Adivinador\Adivinador\obj\Debug\Adivinador.templates.AgregarAnimal.resources
-E:\REPOSITORIO\C#\ADIVINADOR\Adivinador\Adivinador\obj\Debug\Adivinador.prueba.Prueba.resources
